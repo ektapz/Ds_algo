@@ -1,0 +1,279 @@
+package com.Ds_algo.Testcases;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.Ds_algo.Listener.Allurelistener;
+import com.Ds_algo.Pageobject.GetStartedButton;
+import com.Ds_algo.Pageobject.Homepage;
+import com.Ds_algo.Pageobject.Loginpage;
+import com.Ds_algo.Pageobject.Queuemodule;
+import com.Ds_algo.utilities.Loggerclass;
+
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+@Listeners({Allurelistener.class})
+public class TC_Queuemodule extends Baseclass{
+
+	GetStartedButton ppObj;
+	 Homepage hp;
+	 Loginpage lpobj;
+	 Queuemodule qmobj;
+	
+	 @BeforeClass
+	 public void setup2() throws InterruptedException
+	 {
+	  ppObj = new GetStartedButton(driver);
+	  hp = new Homepage(driver);
+	  lpobj = new Loginpage(driver);
+	  qmobj=new Queuemodule(driver);
+	  Thread.sleep(500);
+	  ppObj.ClickOnGetStartedButton();
+    	hp.signinbutton();
+  	lpobj.typeUserName(username);
+  	lpobj.typePassword(password);
+  	lpobj.clickLogin();
+  	//hp.clickdropdownbutton();
+		
+	 }
+	
+
+	  @Epic("Regression test")
+	   @Feature("Feature1: Title checking")
+	   @Story("Story:Queue page title")
+	   @Severity(SeverityLevel.NORMAL)
+	  
+	 @Test	(priority=1)
+	public void Queuepagtitle() throws InterruptedException
+	{
+
+		 qmobj.queuebutton();
+		qmobj.queuetitle();
+		  if(driver.getTitle().equals("Queue"))
+		  {
+		      //Pass
+			 Loggerclass.info("Queue papge title validation");
+		   Assert.assertTrue(true);
+		      System.out.println("Page title contains:Queue ");
+		  }
+		  else 
+		      //Fail
+		  {
+		   try 
+		          {
+		                Loggerclass.debug("Queue page open but failed");
+		                Assert.assertTrue(false);
+		              }
+		       catch(Exception e)
+		          {
+		          //log
+		          e.printStackTrace();
+		          Assert.assertTrue(false);
+		          Thread.sleep(500);
+		          }
+		  }
+		
+		
+	}
+	  @Epic("Regression test")
+	   @Feature("Feature1: Title checking")
+	   @Story("Story:Phython page title")
+	   @Severity(SeverityLevel.NORMAL)
+	 @Test(priority=2)
+	 public void testpythonlink()
+	 { 
+	
+		 qmobj.pythonlinkbutton();
+		  if(driver.getTitle().equals("Implementation of Queue in Python"))
+		  {
+		      //Pass
+			 Loggerclass.info("implementation for page title validation");
+		   Assert.assertTrue(true);
+		      System.out.println("python page contains: implementation ");
+		      qmobj.trymebutton();
+		     qmobj.testeditor();
+		     qmobj.runbuttonclick();
+		     Loggerclass.info("print the value");
+		     driver.navigate().back();
+		     
+		      
+		  }
+		  else 
+		  {
+			 try 
+			    {
+			      Loggerclass.debug("python page open but failed");
+			       Assert.assertTrue(false);     
+			     }
+			       catch(Exception e)
+			          {
+			          //log
+			          e.printStackTrace();
+			          Assert.assertTrue(false);
+			       
+			          }
+			// driver.navigate().back();
+		  }  
+		  	
+		 
+	 }
+	  @Epic("Regression test")
+	   @Feature("Feature1: Title checking")
+	   @Story("Story:Dequelink page title")
+	   @Severity(SeverityLevel.NORMAL)
+	 @Test(priority=3)
+	 public void testdequellink()
+	 { 
+		
+		 qmobj.dequelinkbutton();
+		  if(driver.getTitle().equals("Implementation using collections.deque"))
+		  {
+		      //Pass
+			 Loggerclass.info("implementation for page title validation");
+		   Assert.assertTrue(true);
+		      System.out.println("deque page contains: dequeimplementation ");
+		      qmobj.trymebutton();
+		     qmobj.testeditor();
+		     qmobj.runbuttonclick();
+		     Loggerclass.info("print the value");
+		     driver.navigate().back();
+		     
+		      
+		  }
+		  else 
+		  {
+			 try 
+			    {
+			      Loggerclass.debug("deque page open but failed");
+			       Assert.assertTrue(false);     
+			     }
+			       catch(Exception e)
+			          {
+			          //log
+			          e.printStackTrace();
+			          Assert.assertTrue(false);
+			       
+			          }
+			// driver.navigate().back();
+		  }  
+		  	
+		 
+	 }
+	  @Epic("Regression test")
+	   @Feature("Feature1: Title checking")
+	   @Story("Story:arraylink page title")
+	   @Severity(SeverityLevel.NORMAL)
+	 @Test(priority=4)
+	 public void testarrayllink()
+	 { 
+		
+		 qmobj.arraylinkbutton();
+		  if(driver.getTitle().equals("Implementation using array"))
+		  {
+		      //Pass
+			 Loggerclass.info("implementation for page title validation");
+		   Assert.assertTrue(true);
+		      System.out.println("array page contains: arrayimplementation ");
+		      qmobj.trymebutton();
+		     qmobj.testeditor();
+		     qmobj.runbuttonclick();
+		     Loggerclass.info("print the value");
+		     driver.navigate().back();
+		     
+		      
+		  }
+		  else 
+		  {
+			 try 
+			    {
+			      Loggerclass.debug("array page open but failed");
+			       Assert.assertTrue(false);     
+			     }
+			       catch(Exception e)
+			          {
+			          //log
+			          e.printStackTrace();
+			          Assert.assertTrue(false);
+			       
+			          }
+			// driver.navigate().back();
+		  }  
+		  	
+		 
+	 }
+	  @Epic("Regression test")
+	   @Feature("Feature1: Title checking")
+	   @Story("Story:operation link title")
+	   @Severity(SeverityLevel.NORMAL)
+	 @Test(priority=5)
+	 public void testoperationllink()
+	 { 
+		 //qmobj.queuebutton();
+		 qmobj.operationlinkbutton();
+		  if(driver.getTitle().equals("Queue Operations"))
+		  {
+		      //Pass
+			 Loggerclass.info("Queue Operations for page title validation");
+		   Assert.assertTrue(true);
+		      System.out.println("operation page contains: operationimplementation ");
+		      qmobj.trymebutton();
+		     qmobj.testeditor();
+		     qmobj.runbuttonclick();
+		     Loggerclass.info("print the value");
+		     driver.navigate().back();
+		     
+		      
+		  }
+		  else 
+		  {
+			 try 
+			    {
+			      Loggerclass.debug("operation page open but failed");
+			       Assert.assertTrue(false);     
+			     }
+			       catch(Exception e)
+			          {
+			          //log
+			          e.printStackTrace();
+			          Assert.assertTrue(false);
+			       
+			          }
+			 driver.navigate().back();
+		  }  
+		  	
+		 
+	 }
+	  @Epic("Regression test")
+	   @Feature("Feature1: Title checking")
+	   @Story("Story:Practice page title")
+	   @Severity(SeverityLevel.NORMAL)
+	 @Test(priority=6)
+	 public void Practicequestions()
+	 { 
+	 
+		 
+		qmobj.operationlinkbutton();
+		 qmobj.practicequestions();
+		  if(driver.getTitle().equals(" Practice Questions "))
+		  {
+		      //Pass
+			 Loggerclass.info(" Practice Questions  for page title validation");
+		   Assert.assertTrue(true);
+		      System.out.println("operation page contains:  Practice Questions  ");
+		 
+		Loggerclass.info(" Practice Questions Begin");
+	 }
+	
+	
+	
+	
+	
+	
+	 }	
+}
+
