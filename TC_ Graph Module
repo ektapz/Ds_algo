@@ -1,0 +1,207 @@
+package com.Ds_algo.Testcases;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.Ds_algo.Listener.Allurelistener;
+import com.Ds_algo.Pageobject.GetStartedButton;
+import com.Ds_algo.Pageobject.Graphmodule;
+import com.Ds_algo.Pageobject.Homepage;
+import com.Ds_algo.Pageobject.Loginpage;
+import com.Ds_algo.Pageobject.Queuemodule;
+import com.Ds_algo.utilities.Loggerclass;
+
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
+
+	
+	@Listeners({Allurelistener.class})
+	public class TC_Graphmodule extends Baseclass{
+
+		GetStartedButton ppObj;
+		 Homepage hp;
+		 Loginpage lpobj;
+		 Graphmodule gobj;
+		
+		 @BeforeClass
+		 public void setup2() throws InterruptedException
+		 {
+		  ppObj = new GetStartedButton(driver);
+		  hp = new Homepage(driver);
+		  lpobj = new Loginpage(driver);
+		  gobj=new Graphmodule  (driver);
+		  Thread.sleep(500);
+		  ppObj.ClickOnGetStartedButton();
+	    	hp.signinbutton();
+	  	lpobj.typeUserName(username);
+	  	lpobj.typePassword(password);
+	  	lpobj.clickLogin();
+	  	hp.clickdropdownbutton();
+			
+		 }
+		 @Test	(priority=1)
+		  @Epic("Regression test")
+		   @Feature("Feature1: Title checking")
+		   @Story("Story:graph page title")
+		   @Severity(SeverityLevel.NORMAL)
+			public void Graphpagtitle() throws InterruptedException
+			{
+                gobj.graphbutton();
+				gobj.graphtitle();
+				  if(driver.getTitle().equals("Graph"))
+				  {
+				      //Pass
+					 Loggerclass.info("Graph page title validation");
+				   Assert.assertTrue(true);
+				      System.out.println("Page title contains:Graph ");
+				  }
+				  else 
+				      //Fail
+				  {
+				   try 
+				          {
+				                Loggerclass.debug("Graph page open but failed");
+				                Assert.assertTrue(false);
+				              }
+				       catch(Exception e)
+				          {
+				          //log
+				          e.printStackTrace();
+				          Assert.assertTrue(false);
+				          Thread.sleep(500);
+				          }
+				  }
+				
+				
+			}
+		 @Test(priority=2)
+		  @Epic("Regression test")
+		   @Feature("Feature1: Title checking")
+		   @Story("Story:Graphpage page title")
+		   @Severity(SeverityLevel.NORMAL)
+		 public void testGraphlink()
+		 { 
+			//gobj.graphbutton();
+			 gobj.graphlinkbutton();
+			 gobj.glinkpage();
+			  if(driver.getTitle().equals("Graph"))
+			  {
+			      //Pass
+				 Loggerclass.info("implementation for page title validation");
+			   Assert.assertTrue(true);
+			      System.out.println("Graph page contains: implementation ");
+			      gobj.trymebutton();
+			      gobj.testeditor();
+			      gobj.runbuttonclick();
+			     Loggerclass.info("print the value");
+			     driver.navigate().back();
+			     
+			      
+			  }
+			  else 
+			  {
+				 try 
+				    {
+				      Loggerclass.debug("Graph page open but failed");
+				       Assert.assertTrue(false);     
+				     }
+				       catch(Exception e)
+				          {
+				          //log
+				          e.printStackTrace();
+				          Assert.assertTrue(false);
+				       
+				          }
+				// driver.navigate().back();
+			  }  
+			  	
+			 
+		 }
+		 @Test(priority=3)
+		  @Epic("Regression test")
+		   @Feature("Feature1: Title checking")
+		   @Story("Story:grepresentations page title")
+		   @Severity(SeverityLevel.NORMAL)
+		 public void Graphrepresentlink() throws InterruptedException
+		 { 
+			
+			 gobj.grepresentlinkbutton();
+			  if(driver.getTitle().equals("Graph Representations"))
+			  {
+			      //Pass
+				 Loggerclass.info("implementation for page title validation");
+			   Assert.assertTrue(true);
+			      System.out.println("grrep page contains: implementation ");
+			      gobj.trymebutton();
+			      gobj.testeditor();
+			      gobj.runbuttonclick();
+			     Loggerclass.info("print the value");
+			     driver.navigate().back();
+			     Thread.sleep(500);
+			      
+			  }
+			  else 
+			  {
+				 try 
+				    {
+				      Loggerclass.debug("Graphrepresentation page open but failed");
+				       Assert.assertTrue(false);     
+				     }
+				       catch(Exception e)
+				          {
+				          //log
+				          e.printStackTrace();
+				          Assert.assertTrue(false);
+				       
+				          }
+				 //driver.navigate().back();
+			  }  
+			  	
+			 
+		 }	 
+	
+		 @Test(priority=4)
+		  @Epic("Regression test")
+		   @Feature("Feature1: Title checking")
+		   @Story("Story:Practice page title")
+		   @Severity(SeverityLevel.NORMAL)
+		 
+		 public void Practicequestions()
+		 { 
+		   // qmobj.queuebutton();
+			 
+			//qmobj.operationlinkbutton();
+			gobj.practicepage();
+			  if(driver.getTitle().equals(" Practice Questions "))
+			  {
+			      //Pass
+				 Loggerclass.info(" Practice Questions  for page title validation");
+			   Assert.assertTrue(true);
+			      System.out.println("operation page contains:  Practice Questions  ");
+			 
+			Loggerclass.info(" Practice Questions Begin");
+		 }
+		
+		
+		
+		
+		
+		
+		 }	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
