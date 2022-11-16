@@ -1,0 +1,82 @@
+package com.Ds_algo.Pageobject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Queuemodule {
+	WebDriver ldriver;
+	 public Actions action;
+	 public Queuemodule (WebDriver rdriver)
+	 {
+	  ldriver = rdriver;
+	  PageFactory.initElements(rdriver, this);
+	  action = new Actions(this.ldriver);
+	 }
+
+	@FindBy (xpath="//a[@href='queue']")public WebElement queue;
+	@FindBy(xpath="//div/h4")public WebElement topicqueue;
+	@FindBy (linkText="Implementation of Queue in Python")public WebElement Pythonlink;
+	@FindBy (linkText="Try here>>>")public WebElement trymeclick;
+	@FindBy (xpath="//*[@id='answer_form']/div/div']")public WebElement printbox;
+	
+	@FindBy (xpath="//button[text()='Run']")public WebElement runbutton;
+	@FindBy (linkText="Implementation using collections.deque")public WebElement dequelink;
+	@FindBy (linkText="Implementation using array")public WebElement arraylink;
+	@FindBy (linkText="Queue Operations")public WebElement qoperlink;
+	@FindBy(xpath="//pre[@role='presentation']/span") public WebElement Editor;
+	@FindBy (xpath="//a[text()='Practice Questions']") WebElement practicequestions;
+	public void queuebutton()
+	{
+		queue.click();	
+	}
+	public String queuetitle() {
+		 return topicqueue.getText() ;
+		 }
+	public void pythonlinkbutton()
+	{
+		Pythonlink.click();	
+	}
+	public void trymebutton()
+	{
+		trymeclick.click();	
+	}
+	 public void printhello(String Hello) {
+		 printbox.sendKeys(Hello);
+		  
+		 }
+	 public void runbuttonclick()
+		{
+			runbutton.click();	
+		}
+	 public void dequelinkbutton()
+		{
+		 dequelink.click();	
+		}
+	 public void arraylinkbutton()
+		{
+		 arraylink.click();	
+		}
+	 public void operationlinkbutton()
+		{
+		 qoperlink.click();	
+		}
+	 public void practicequestions()
+		{
+		 practicequestions.click();	
+		}
+	 
+	
+	public void testeditor()
+	
+		
+		   {
+		     action.moveToElement(Editor).click().sendKeys("print('Hello World')").build().perform();
+		    
+		   }
+	
+
+}
