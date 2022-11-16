@@ -1,0 +1,83 @@
+package com.Ds_algo.Pageobject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Graphmodule {
+
+	
+		WebDriver ldriver;
+		 public Actions action;
+		 public  Graphmodule (WebDriver rdriver)
+		 {
+		  ldriver = rdriver;
+		  PageFactory.initElements(rdriver, this);
+		  action = new Actions(this.ldriver);
+		 }
+		    @FindBy (xpath="//a[text()='Graph']")public WebElement Graph;
+			@FindBy(xpath="//div[2]/h4[text()='Graph']")public WebElement topicgraph;
+			@FindBy (linkText="Graph")public WebElement graphlink;
+			@FindBy(xpath="//div[2]/strong/p")public WebElement graphlinkpage;
+			@FindBy (linkText="Try here>>>")public WebElement trymeclick;
+			@FindBy(xpath="//pre[@role='presentation']/span") public WebElement Editor;
+			@FindBy (xpath="//button[text()='Run']")public WebElement runbutton;
+		 
+		    @FindBy(linkText="Graph Representations")WebElement graphrepresentlink;
+		    @FindBy (xpath="//div[2]/strong/p")WebElement grepresentpage;
+		    @FindBy (xpath="//a[text()='Practice Questions']")WebElement practicepagelink;
+		    
+			public void graphbutton()
+			{
+				Graph.click();	
+			}
+			
+			public String graphtitle() {
+				 return topicgraph.getText() ;
+				 }
+			
+			public void graphlinkbutton()
+			{
+				graphlink.click();	
+			}
+			
+			public String glinkpage() {
+				return  graphlinkpage.getText();
+			}
+			
+			public void trymebutton()
+			{
+				trymeclick.click();	
+			}
+			 
+			 public void runbuttonclick()
+				{
+					runbutton.click();	
+				}
+			 public void grepresentlinkbutton()
+				{
+				 graphrepresentlink.click();	
+				}
+			 public String grlinkpage ()
+				{
+				return grepresentpage.getText();	
+				}
+			 
+			 public void testeditor()
+				
+				
+			   {
+			     action.moveToElement(Editor).click().sendKeys("print('Hello World')").build().perform();
+			    
+			   }
+		   
+		 public void practicepage()
+		 {
+			 practicepagelink.click();
+		 }
+		 
+		 
+
+}
